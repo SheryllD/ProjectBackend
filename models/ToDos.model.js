@@ -1,4 +1,4 @@
-/*const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const todoSchema = new Schema({
   name: String,
@@ -12,4 +12,3 @@ const todoSchema = new Schema({
 const TodoItem = model("TodoItem", todoSchema);
 
 module.exports = TodoItem;
-*/ 

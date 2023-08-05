@@ -1,16 +1,16 @@
 const router = require("express").Router();
-const User = require("../models/User.model"); 
+const TodoItem = require("../models/ToDos.model"); 
 
 router.get("/", (req, res, next) => {   //update this route
 //const response = await User.find()
   res.json("Everything is running ok");
 });
 
-// get to get a user 
+//GET to get on TodoItem
 
-//post to create a user 
+//TO create one TodoItem
 
-//put to update a user 
+//PUT to update one TodoItem
 
-//delete 
+//DELETE to delete one TodoItem
 module.exports = router;
