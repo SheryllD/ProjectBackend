@@ -5,18 +5,30 @@ require("./db");
 // Handles http requests (express is node js framework) https://www.npmjs.com/package/express
 const express = require("express");
 const app = express();
+
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
+//middleware
+app.use((req, res) => {
+    console.log(req.path, req.method)
+    next()
+}); 
+
 // All the routes are in here 
+app.get('/', (req, res) => {
+    res.json({mssg: "welcome to the app"})
+  });
+
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
+
 // Add authRoute
 // Add userRoute
 // Add 
 // Add 
 
-// ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
+// To handle errors. Routes that don't exist or errors 
 require("./error-handling")(app);
 
 module.exports = app;
