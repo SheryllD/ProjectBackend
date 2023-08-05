@@ -1,8 +1,8 @@
-/*
-const router = require("express").Router()
-const User = require("../models/User.model")
-const bcrypt = require("bcryptjs"); 
+//const router = require("express").Router()
+//const User = require("../models/User.model")
+//const bcrypt = require("bcryptjs"); 
 
+/*
 // get signup
 router.get("/signup", (req, res, next) => {
   res.json("sign-up ok");
@@ -35,6 +35,5 @@ router.get("/signup", (req, res, next) => {
 // Get Rout to verify the token 
 
 module.exports = router;
-
-
 */
+
