@@ -10,9 +10,9 @@ router.get("/signup", (req, res, next) => {
 
 //router.use("/user/routes", userRoutes)
 
-// post signup
+// Add sign up user
 
-//validation 
+//get user data from the sign-up form 
 
 //check if this email is already being used
 
