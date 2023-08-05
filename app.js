@@ -27,6 +27,9 @@ app.use("/api", indexRoutes);
 const usersRoutes = require("./routes/users.routes"); 
 app.use("users", usersRoutes); 
 
+const todosRoutes = require("./routes/todos.routes"); 
+app.use("todos", todosRoutes); 
+
 // To handle errors. Routes that don't exist or errors 
 require("./error-handling")(app);
 

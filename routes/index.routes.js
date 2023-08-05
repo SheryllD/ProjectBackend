@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const usersRoutes = require ("./users.routes");
+const usersRoutes = require("./users.routes");
+const todosRoutes = require("./todos.routes"); 
 
 // get homepage
 router.get("/", (req, res, next) => {
@@ -7,5 +8,6 @@ router.get("/", (req, res, next) => {
 });
 
 router.use('/users', usersRoutes)
+router.use('/todos', todosRoutes)
 
 module.exports = router;

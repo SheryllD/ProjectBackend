@@ -2,8 +2,7 @@ const router = require("express").Router();
 const TodoItem = require("../models/ToDos.model"); 
 
 router.get("/", (req, res, next) => {   //update this route
-//const response = await User.find()
-  res.json("Everything is running ok");
+  res.json("To Do is running ok");
 });
 
 //GET to get on TodoItem
