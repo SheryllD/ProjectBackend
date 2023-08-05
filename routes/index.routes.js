@@ -6,5 +6,4 @@ router.get("/", (req, res, next) => {
   res.json("all good");
 });
 
-
 module.exports = router;
