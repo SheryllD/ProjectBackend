@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const TodoItem = require("../models/ToDos.model"); 
-import axios from "axios"; //imported this 1:51
+//import axios from "axios"; //imported this 1:51
 
 router.get("/", async (req, res, next) => {  
     const response = await TodoItem.find() 

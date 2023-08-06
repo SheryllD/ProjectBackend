@@ -10,11 +10,6 @@ require("./config")(app);
 //    next()
 //}); 
 
-// All the routes are in here 
-//app.get('/', (req, res) => {
-//    res.json({mssg: "welcome to the app"})
-//  });
-
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes); 
 
@@ -27,7 +22,7 @@ app.use("/api", indexRoutes);
 const usersRoutes = require("./routes/users.routes"); 
 app.use("users", usersRoutes); 
 
-const todosRoutes = require("./routes/todos.routes"); 
+const todosRoutes = require("./routes/ToDos.routes"); 
 app.use("todos", todosRoutes); 
 
 // To handle errors. Routes that don't exist or errors 
