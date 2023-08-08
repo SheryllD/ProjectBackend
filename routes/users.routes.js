@@ -1,40 +1,19 @@
-//import axios from "axios"; //imported at 1:51
 const router = require("express").Router();
 const { response } = require("express");
 const User = require("../models/User.model"); 
 
-router.get("/", async (req, res, next) => {   //update this route
-const response = await User.find()
-  res.json("Everything is running ok");
-});
+/* GET ALL USERS -----------------------------------*/
 
-// get to get a user 
-router.get('/:userId', async (req, res) => {
-  console.log(req.params)
-  const response = await User.findById(req.params.userId)
+/* GET ONE USER -----------------------------------*/
 
-  res.json(response)
-})
+/* CREATE THE USER -----------------------------------*/
 
-//post to create a user 
-router.post('/', async (req, res) => {
-  const oneUser = await User.create(req.body)
-  res.json(201).json(oneUser)
-})
+/* UPDATE USER ----------------------------------- */
 
-//put to update a user 
-router.put('/:userId', async (req, res) => {
-  const {userId} = req.params;
+/* DELETE THE USER ----------------------------------- */
 
-const updatedUser = await User.findByIdAndUpdate(userId, req.body, { new: true })
-res.json(response)
-})
+/* TASKS/TODOS BY USER ----------------------------------- */
 
-//DELETE to delete one user
-router.delete('/:userId', async (req, res) => {
- await User.findByIdAndDelete(req.params.userId)
-
-res.status(202).json({message: "User successfully deleted"})
-})
+/* NOTES BY USER ----------------------------------- */
 
 module.exports = router;
