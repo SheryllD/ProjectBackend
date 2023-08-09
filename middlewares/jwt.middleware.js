@@ -1,4 +1,3 @@
-// add middleware function and authentication also
 const { expressjwt } = require('express-jwt')
 
 const isAuthenticated = expressjwt({

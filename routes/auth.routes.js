@@ -11,23 +11,23 @@ router.get('/registerpage', (req, res, next) => {
 })
 
 //post data to register the user 
-router.post('/registerpage', async (req, res) => {
+router.post('/signup', async (req, res) => {
   console.log(req.body)
   const payload = req.body 
   
-  const salt = bqrypt.genSaltsync(13)
-  const passwordHash = bqrypt.hashSync(payload.password, salt)
+  const salt = bcrypt.genSaltSync(13)
+  const passwordHash = bcrypt.hashSync(payload.password, salt)
 
   try{
     await User.create({
-      username: payload.username, 
+      username: payload.name, 
       email: payload.email, 
-      password: password
+      password: passwordHash
     })
     res.status(201).json({ message: 'User created'})
   } catch (error) {
-    consol.log(error)
-    res.status(500),json(error)
+    console.log(error)
+    res.status(500).json(error)
   }
 })
 
@@ -43,7 +43,7 @@ router.post('/loginpage', async (req, res) => {
       /* Sign the JWT. This creates the token*/
       const authToken = jwt.sign({ userId: potentialUser._id }, process.env.TOKEN_SECRET, {
         algorithm: 'HS256',
-        expiresIn: '8h',
+        expiresIn: '50h',
       })
       // Send token to the front.
       res.status(202).json({ token: authToken})
@@ -66,7 +66,7 @@ router.get('/verify', isAuthenticated, async(req, res) => {
   res.status(200).json({message: 'This token is valid', currentUser})
 })
 
-module.exports = router
+module.exports = router;
 
 /*
 router.get("/signup", (req, res, next) => {

@@ -4,8 +4,6 @@ const express = require("express");
 const app = express();
 require("./config")(app);
 
-//const allRoutes = require("./routes"); 
-//app.use("/api, allRoutes"); 
 
 const authRoutes = require("./routes/auth.routes"); 
 app.use("/auth", authRoutes); 
