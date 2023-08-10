@@ -58,14 +58,6 @@ router.get("/:TodoId", async (req, res) => {
   res.json(Todos);
 });
 
-// //DELETE to delete one TodoItem
-// router.delete('/:TodosId', async (req, res) => {
-//     await Todos.findByIdAndDelete(req.params.todosId)
-//     res.status(202).json({ message: 'Task deleted'})
-// })
-
-//PUT to update one TodoItem
-
 router.post("/edit/:TodoId", async (req, res) => {
   try {
     const payload = req.body;

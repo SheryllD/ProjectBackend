@@ -1,30 +1,24 @@
 const { Schema, model } = require("mongoose");
 
-const notesSchema = new Schema(
-  {
-    owner:{
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
-    },
-    title: {
-      type: String,
-      enum: [],
-      required: true,
-    },
-    date: {
-        type: Date,
-    },
-    content: {
-      type: [String],
-      required: true,
-    },
+const notesSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
-  {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
-  }
-);
+  text: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: false,
+  },
+  timestamps: {
+    type: String,
+    default: Date.now(),
+  },
+});
 
 const Notes = model("Notes", notesSchema);
 
