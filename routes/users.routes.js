@@ -52,10 +52,10 @@ router.get('/:userId/Todos', async (req, res) => {
 /* NOTES BY USER ----------------------------------- */
 router.get('/:userId/notes', async (req, res) => {
   try {
-    const notesByUser = await notes.findById(req.params.userId)
+    const notesByUser = await Notes.findById(req.params.userId)
       .populate('user')
       .populate('notes');
-    res.json(notesByUser);
+    res.json(NotesByUser);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching the notes', error });
   }

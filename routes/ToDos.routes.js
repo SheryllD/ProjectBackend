@@ -1,5 +1,63 @@
 const router = require("express").Router();
-const TodoItem = require("../models/ToDos.model"); 
+const { isAuthenticated } = require("../middlewares/jwt.middleware");
+const Todos = require("../models/ToDos.model"); 
+
+router.get('/', async (req, res) => {
+    try {const todos = await Todos.find();
+        res.status(200).json(todos);
+    }  catch (error) {console.log(error)}
+});
+
+router.get('/:todoId', async (req, res) => {
+    console.log(req.params)
+    const oneTodo = await Todos.findById(req.params.ToDoId)
+    res.json(oneTodo)
+  })
+
+router.post('/new', isAuthenticated, async (req, res) => {
+    try {
+        console.log(req.body, req.payload)
+        const newToDo = await Todos.create({
+            user: req.payload.userId, 
+            text: req.body.text
+        })
+        console.log("here is your todo", newToDo); 
+        res.status(201).json(newToDo); 
+    } catch (error) {
+        console.log(error)
+    }
+
+    //const Todo = new Todo({
+	//	text: req.body.text
+	// })
+
+	// Todo.save();
+	// res.json(Todo);
+});
+
+router.delete('/todo/delete/:todoId', async (req, res) => {
+	const result = await Todos.findByIdAndDelete(req.params.id);
+	res.json({result});
+});
+
+router.get('/todo/complete/:TodoId', async (req, res) => {
+	const Todo = await Todos.findById(req.params.id);
+
+	Todo.complete = !Todos.complete;
+	Todo.save();
+	res.json(Todo);
+})
+
+router.put('/todo/update/:Todoid', async (req, res) => {
+	const Todo = await Todos.findById(req.params.id);
+
+	Todo.text = req.body.text;
+	Todo.save();
+	res.json(Todo);
+});
+
+module.exports = router;
+
 //import axios from "axios"; //imported this 1:51
 /*
 router.get("/", async (req, res, next) => {  
@@ -31,5 +89,4 @@ router.delete('/:ToDoItemId', async (req, res) => {
     res.status(202).json({ message: 'Task deleted'})
 })
 */
-module.exports = router;
 

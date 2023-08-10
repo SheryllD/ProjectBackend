@@ -32,7 +32,7 @@ router.post('/signup', async (req, res) => {
 })
 
 /* ---------------POST route to login the user --------------- */
-router.post('/loginpage', async (req, res) => {
+router.post('/login', async (req, res) => {
   const payload = req.body 
   /* User exists? Check! */
   const potentialUser = await User.findOne({ email: payload.email })
@@ -46,7 +46,7 @@ router.post('/loginpage', async (req, res) => {
         expiresIn: '50h',
       })
       // Send token to the front.
-      res.status(202).json({ token: authToken})
+      res.status(202).json({ authToken})
     } else {
       /* Incorrect password */
       res.status(403).json({errorMessage: 'Password is invalid'})
